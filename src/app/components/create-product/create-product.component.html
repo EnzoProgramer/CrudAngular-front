@@ -1,0 +1,58 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-8 col-md-8">
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="card-title">
+            <span class="h3 align-middle me-3 text-primary text-uppercase">{{ title | uppercase }}</span>
+          </div>
+          <form class="text-start" [formGroup]="productForm" (ngSubmit)="createProduct()">
+            <!-- DIV PRODUCT -->
+            <div class="mb-3">
+              <label for="product" class="form-label">Name Product:</label>
+              <input type="text" class="form-control" id="product" placeholder="Name Product" formControlName="product">
+              <div class="text-danger"
+                *ngIf="productForm.get('product')?.touched && productForm.get('product')?.hasError('required')">
+                <span class="ms-2">product name is <b>required</b></span>
+              </div>
+            </div>
+            <!-- DIV CATEGORY -->
+            <div class="mb-3">
+              <label for="category" class="form-label">Category:</label>
+              <input type="text" class="form-control" id="category" placeholder="Category Product"
+                formControlName="category">
+              <div class="text-danger"
+                *ngIf="productForm.get('category')?.touched && productForm.get('category')?.hasError('required')">
+                <span class="ms-2">product category is <b>required</b></span>
+              </div>
+            </div>
+            <!-- DIV DESCRIPTION -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description:</label>
+              <input type="text" class="form-control" id="description" placeholder="Describe your product"
+                formControlName="description">
+              <div class="text-danger" *ngIf="productForm.get('description')?.touched &&
+                  productForm.get('description')?.hasError('required')">
+                <span class="ms-2">product description is <b>required</b></span>
+              </div>
+            </div>
+            <!-- DIV PRICE -->
+            <div class="mb-3">
+              <label for="price" class="form-label">Price:</label>
+              <input type="number" class="form-control" id="price" placeholder="Assign price" formControlName="price">
+              <div class="text-danger"
+                *ngIf="productForm.get('price')?.touched && productForm.get('price')?.hasError('required')">
+                <span class="ms-2">product price is <b>required</b></span>
+              </div>
+            </div>
+            <!-- DIV BUTTON -->
+            <div class="mb-3 text-end">
+              <button type="submit" class="btn btn-primary me-1" [disabled]="!productForm.valid">Add</button>
+              <a type="button" class="btn btn-danger" routerLink="/">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

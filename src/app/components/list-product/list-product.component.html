@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="card-title">
+            <span class="h3 align-middle me-3 text-primary text-uppercase">List Products</span>
+            <button class="btn btn-success float-md-end" routerLink="/create-product">New</button>
+          </div>
+          <table class="table table-light table-striped table-borderless mt-3">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of listProducts">
+                <td scope="row">{{ product.product }}</td>
+                <td scope="row">{{ product.category }}</td>
+                <td scope="row">{{ product.description }}</td>
+                <td scope="row">{{ product.price }}</td>
+                <td scope="row">
+                  <i [routerLink]="['/edit-product', product._id]" class="bi bi-pencil text-primary"></i>
+                  <i (click)="deleteProduct(product._id)" class="bi bi-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
